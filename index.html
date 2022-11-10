@@ -162,12 +162,12 @@ var ParticlePool = (function() {
 /*
  * Putting it all together
  */
+      
 (function(canvas) {
   var context = canvas.getContext('2d'),
-      particles = new ParticlePool(settings.particles.length),
-      particleRate = settings.particles.length / settings.particles.duration, // particles/sec
-      time;
- 
+  particles = new ParticlePool(settings.particles.length),
+  particleRate = settings.particles.length / settings.particles.duration, // particles/sec
+  time;
   // get point on heart with -PI <= t <= PI
   function pointOnHeart(t) {
     return new Point(
@@ -201,8 +201,12 @@ var ParticlePool = (function() {
     }
     context.closePath();
     // create the fill
-    context.fillStyle = 'red';
+    let color = Math.floor(Math.random() * 11);
+    let arr = ["green", "yellow", "red", "gray", "white", "purple","green", "yellow", "red", "blue", "white"];
+    setInterval(context.fillStyle = arr[color], 2000)
+    
     context.fill();
+
     // create the image
     var image = new Image();
     image.src = canvas.toDataURL();
